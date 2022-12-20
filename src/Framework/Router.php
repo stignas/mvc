@@ -17,21 +17,21 @@ class Router
      */
     public function process(string $url, string $regId = ''): void
     {
-        $controller = $this->container->get('mvc\Controllers\CarController');
-
+        $CarController = $this->container->get('mvc\Controllers\CarController');
+        $PageController = $this->container->get('mvc\Controllers\PageController');
         switch ($url) {
             case '/paskaitos/OOP/30p/MVCProject/':
-                require __DIR__ . '/../../views/index.html';
+                $PageController->index();
                 break;
             case '/paskaitos/OOP/30p/MVCProject/list':
-                $controller->list();
+                $CarController->list();
                 break;
             case '/paskaitos/OOP/30p/MVCProject/details':
-                $controller->details($regId);
+                $CarController->details($regId);
                 break;
             default:
                 http_response_code(404);
-                require __DIR__ . '/../../views/404.html';
+                $PageController->error();
                 break;
         }
     }
