@@ -17,6 +17,7 @@ class CarController
      */
     public function list(): void
     {
+
         $cars = $this->container->get("mvc\Repositories\CarRepository")->getAll();
         require(__DIR__ . '/../../views/list.phtml');
     }

@@ -5,6 +5,9 @@ namespace mvc\Framework;
 
 use mvc\Container\DiContainer;
 use Exception;
+use mvc\Controllers\CarController;
+use mvc\Controllers\PageController;
+
 
 class Router
 {
@@ -15,18 +18,22 @@ class Router
     /**
      * @throws Exception
      */
-    public function process(string $url, string $regId = ''): void
+    public function process(string $route, string $regId = ''): void
     {
+        /* @var CarController $CarController
+         * @var PageController $PageController
+         */
         $CarController = $this->container->get('mvc\Controllers\CarController');
         $PageController = $this->container->get('mvc\Controllers\PageController');
-        switch ($url) {
-            case '/paskaitos/OOP/30p/MVCProject/':
+
+        switch ($route) {
+            case '/':
                 $PageController->index();
                 break;
-            case '/paskaitos/OOP/30p/MVCProject/list':
+            case '/car/list':
                 $CarController->list();
                 break;
-            case '/paskaitos/OOP/30p/MVCProject/details':
+            case '/car/details':
                 $CarController->details($regId);
                 break;
             default:

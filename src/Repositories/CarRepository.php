@@ -5,6 +5,7 @@ namespace mvc\Repositories;
 
 use Exception;
 use mvc\Container\DiContainer;
+use mvc\Models\Car;
 
 class CarRepository
 {
@@ -17,13 +18,14 @@ class CarRepository
     /**
      * @throws Exception
      */
-    public function getByRegistrationId(string $registrationId): object
+    public function getByRegistrationId(string $registrationId = ''): Car
     {
-        $cars = json_decode(file_get_contents(self::DATA_FILE), true);
-        $carObj = $this->container->get('mvc\Models\Car');
+        /* @var Car $carObj */
+        $cars = $this->getData();
 
         foreach ($cars as $car) {
             if ($car['registrationId'] === $registrationId) {
+                $carObj = $this->container->get('mvc\Models\Car');
                 $carObj->setRegistrationId($car['registrationId']);
                 $carObj->setManufacturer($car['manufacturer']);
                 $carObj->setModel($car['model']);
@@ -42,7 +44,8 @@ class CarRepository
      */
     public function getAll(): array
     {
-        $dataArray = json_decode(file_get_contents(self::DATA_FILE), true);
+        /* @var Car $carObj */
+        $dataArray = $this->getData();
         $carsArray = [];
         foreach ($dataArray as $car) {
             $carObj = $this->container->get('mvc\Models\Car');
@@ -53,5 +56,10 @@ class CarRepository
             $carsArray[] = $carObj;
         }
         return $carsArray;
+    }
+
+    public function getData(): array
+    {
+        return json_decode(file_get_contents(self::DATA_FILE), true);
     }
 }

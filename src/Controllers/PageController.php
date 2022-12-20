@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace mvc\Controllers;
 
-use mvc\Container\DiContainer;
-
 class PageController
 {
 
