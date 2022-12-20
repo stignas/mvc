@@ -1,0 +1,9 @@
+{
+    "name": "statk/mvc-project",
+    "autoload": {
+        "psr-4": {
+            "mvc\\": "src/"
+        }
+    },
+    "require": {}
+}

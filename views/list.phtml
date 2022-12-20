@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/paskaitos/OOP/30p/MVCProject/views/list.css"/>
+    <title>Car List</title>
+</head>
+<body>
+<main>
+    <h1>Automobilių sąrašas</h1>
+    <table>
+        <tbody>
+        <tr>
+            <th>Eil. Nr.</th>
+            <th>Registracijos Nr.</th>
+            <th>Gamintojas</th>
+            <th>Modelis</th>
+            <th>Metai</th>
+        </tr>
+        <?php foreach ($cars as $i => $car): ?>
+            <tr>
+                <td><?= $i + 1 ?></td>
+                <td><?= $car->getRegistrationId() ?></td>
+                <td><?= $car->getManufacturer() ?></td>
+                <td><?= $car->getModel() ?></td>
+                <td><?= $car->getYear() ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/paskaitos/OOP/30p/MVCProject/views/details.css"/>
+    <title>Car Details</title>
+</head>
+<body>
+<!-- TODO: Create page layout -->
+<main>
+    <h1>Automobilis (Reg.Nr.: <i><?= $car->getRegistrationId() ?></i>)</h1>
+    <table>
+        <tr>
+            <th>Gamintojas</th>
+            <th>Modelis</th>
+            <th>Metai</th>
+        </tr>
+        <tr>
+            <td><?= $car->getManufacturer() ?></td>
+            <td><?= $car->getModel() ?></td>
+            <td><?= $car->getYear() ?></td>
+        </tr>
+    </table>
+</main>
+</body>
+</html>
